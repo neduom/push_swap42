@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utilis.c                                     :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-moud <mel-moud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:56:37 by mel-moud          #+#    #+#             */
-/*   Updated: 2025/01/24 14:47:41 by mel-moud         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:19:33 by mel-moud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_lstsize(t_stack_node *lst)
 {
-	int		i;
+	int				i;
 	t_stack_node	*r;
 
-    if (!lst)
-        return (0);
 	i = 0;
 	r = lst;
+	if (!lst)
+		return (0);
 	while (r)
 	{
 		r = r->next;
@@ -28,6 +28,7 @@ int	ft_lstsize(t_stack_node *lst)
 	}
 	return (i);
 }
+
 t_stack_node	*ft_lstlast(t_stack_node *lst)
 {
 	if (lst == NULL)
@@ -36,7 +37,8 @@ t_stack_node	*ft_lstlast(t_stack_node *lst)
 		lst = lst->next;
 	return (lst);
 }
-void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
+
+void	ft_back(t_stack_node **lst, t_stack_node *new)
 {
 	t_stack_node	*curr;
 
@@ -52,14 +54,14 @@ void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
 		curr = curr->next;
 	curr->next = new;
 }
+
 void	assign_position(t_stack_node *stack)
 {
-	t_stack_node *curr;
-	int i;
+	t_stack_node	*curr;
+	int				i;
 
 	i = 0;
 	curr = stack;
-	
 	while (curr)
 	{
 		curr->position = i;
@@ -67,13 +69,14 @@ void	assign_position(t_stack_node *stack)
 		curr = curr->next;
 	}
 }
+
 int	get_max_position(t_stack_node *stack)
 {
 	t_stack_node	*curr;
 	t_stack_node	*max;
 
 	curr = stack;
-	max	= curr;
+	max = curr;
 	while (curr)
 	{
 		if (curr->value > max->value)
